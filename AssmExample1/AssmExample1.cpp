@@ -2,22 +2,33 @@
 
 using namespace std;
 
-extern "C" int CalcResult1_(int vall, int val2, int* quo, int* rem);
+extern "C" int IntegerAddSub_(int a, int b, int c, int d);
+
+static void PrintResult(const char* msg, int a, int b, int c, int d, int result)
+{
+	const char nl = '\n';
+	cout << msg << nl;
+	cout << "a = " << a << nl;
+	cout << "b = " << b << nl;
+	cout << "c = " << c << nl;
+	cout << "d = " << d << nl;
+	cout << "result = " << result << nl;
+	cout << nl;
+}
+
 
 int main()
 {
-	int val1 = 42;
-	int val2 = 9;
-	int quo;
-	int rem;
-	int prod = CalcResult1_(val1, val2, &quo, &rem);
+	int a, b, c, d, result;
 
-	cout << "Results for Example1\n";
-	cout << "val1 = " << val1 << '\n';
-	cout << "val2 = " << val2 << '\n';
-	cout << "quo = " << quo << '\n';
-	cout << "rem = " << rem << '\n';
-	cout << "prod = " << prod << '\n';
+	a = 10; b = 20; c = 30; d = 18;
+
+	result = IntegerAddSub_(a, b, c, d);
+	PrintResult("Test 1", a, b, c, d, result);
+
+	a = 101; b = 34; c = -190; d = 25;
+	result = IntegerAddSub_(a, b, c, d);
+	PrintResult("Test 2", a, b, c, d, result);
 
 	return 0;
 }
